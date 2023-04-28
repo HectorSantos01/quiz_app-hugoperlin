@@ -30,15 +30,16 @@ class ControladorQuiz {
   String get alternativaSelecionada => _alternativaSelecionada;
   bool get selecionouAlternativa => _status == StatusQuiz.RESPONDER;
   bool get respondeuPergunta => _respondeu;
-  bool get acertouResposta =>
-      (questaoAtual.alternativaCorreta == _alternativaSelecionada);
+  bool get acertouResposta => (questaoAtual.alternativaCorreta == _alternativaSelecionada);
 
   bool get acabou => _status == StatusQuiz.FINALIZAR;
   bool get verResultados => _status == StatusQuiz.RESULTADOS;
 
   void selecionarAlternativa(String alternativa) {
+    if(!_respondeu){
     _alternativaSelecionada = alternativa;
     _status = StatusQuiz.RESPONDER;
+    }
   }
 
   //método que determina o que fazer quando clicar no botão
